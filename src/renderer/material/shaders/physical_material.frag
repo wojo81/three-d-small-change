@@ -43,9 +43,7 @@ void main()
     vec4 surface_color = albedo * col;
 #ifdef USE_ALBEDO_TEXTURE
     vec4 c = texture(albedoTexture, (albedoTexTransform * vec3(uvs, 1.0)).xy);
-    #ifdef ALPHACUT
-        if (c.a < acut) discard;
-    #endif
+    if (c.a < acut) discard;
     surface_color *= c;
 #endif
 
